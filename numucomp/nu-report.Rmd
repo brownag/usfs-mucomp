@@ -119,51 +119,49 @@ summarizeSamples <- function(samples, probs=c(0,0.05,0.5,0.95,1))  {
   return(res)
 }
 
-getThresholds <- function(mu, varname) {
-  df <- data.frame(mu, varname)
+getThresholds <- function(mus, varname) {
+  df <- data.frame(mus=as.character(mus), 
+                   varname=as.character(varname))
+  if(length(varname) > 1) {
+    varname <- varname[1]
+    message("Multiple variable names supplied to getThresholds(), returning values for first name.")
+  }
+  
   res.max <- rep(Inf, nrow(df))
   res.min <- rep(-Inf, nrow(df))
-  for(m in mu) {
-    for(v in varname) {
-      for(t in threshold.list) {
-        idx <- which(grepl(m, pattern = t$musym) & df[,2] == v)
-        if(length(idx)) {
-          res.max[idx] <- t$vmax
-          res.min[idx] <- t$vmin
-        }
-      }      
+  
+  for(tl in threshold.list) {
+    if(tl$name == varname & all(grepl(mus, pattern=tl$musym))) {
+      res.max <- rep(tl$vmax, nrow(df))
+      res.min <- rep(tl$vmin, nrow(df))
     }
-  }
-  return(data.frame(vmin=res.min,vmax=res.max))
+  }      
+  
+  return(data.frame(vmin=res.min,
+                    vmax=res.max))
 }
 
 thresholdSamples <- function(samples, threshold.list)  {
   res <- lapply(raster.pnames, function(n) {
-    foo <- factor(rep(NA, nrow(samples)), levels=c(NA,"LT","IN","GT"))
-    if(n %in% names(samples)) {
-      foo <- factor(rep("IN", nrow(samples)), levels=c(NA,"LT","IN","GT"))
-      tthresh <- quantile(samples[,n], probs=c(0.01,0.99), na.rm=T)
-      #thresh <- list()
-      #thresh$vmin <- tthresh[1]
-      #thresh$vmax <- tthresh[2]
-      thresh <- getThresholds(samples[,1], varname = n)
-      foo[samples[, n] > thresh$vmax] <- "GT"
-      foo[samples[, n] < thresh$vmin] <- "LT"
-    }
-    return(t(table(foo)))
+    foo <- factor(rep("IN", nrow(samples)), levels=c("LT","IN","GT"))
+    tthresh <- quantile(samples[,n], probs=c(0.01,0.99), na.rm=T)
+    #thresh <- list()
+    #thresh$vmin <- tthresh[1]
+    #thresh$vmax <- tthresh[2]
+    thresh <- getThresholds(samples[,1], varname = n)
+    foo[samples[, n] > thresh$vmax] <- "GT"
+    foo[samples[, n] < thresh$vmin] <- "LT"
+    tab <- t(table(foo))
+    tab <- round(tab/sum(tab),2)
+    names(tab) <- c("LT","IN","GT")
+    return(c(tab, unique(thresh)))
   })
   names(res) <- raster.pnames
   res <- list.to.df(res, idcol='variable')
   return(res)
 }
 
-all.samples <- sampling.res$raster.samples
-foo <- split(all.samples, f=all.samples[,c("pID")])
-foo2 <- split(all.samples, f=all.samples[,c(mu.col)])
-
-res <- list.to.df(lapply(foo, summarizeSamples), "pID")
-res <- res[order(as.numeric(res$pID)),]
-
+# example thresholding
 res2 <- list.to.df(lapply(foo2, thresholdSamples), mu.col)
 res2 <- res2[order(res2$musym, res2$variable),]
 res2
