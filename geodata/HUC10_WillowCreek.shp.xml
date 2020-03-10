@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE metadata SYSTEM "http://www.fgdc.gov/metadata/fgdc-std-001-1998.dtd">
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>U.S. Department of Agriculture, Natural Resources Conservation Service, National Cartography and Geospatial Center </origin>
+				<pubdate>2009</pubdate>
+				<pubtime>Unknown</pubtime>
+				<title Sync="TRUE">S_USA_WBD_HU10</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<pubinfo>
+					<pubplace>Fort Worth, Texas</pubplace>
+					<publish>U.S. Department of Agriculture, Natural Resources Conservation Service, National Cartography and Geospatial Center </publish>
+				</pubinfo>
+				<ftname Sync="TRUE">S_USA_WBD_HU10</ftname><onlink Sync="TRUE">\\ds.fs.fed.us\EFS\FS\Reference\GIS\r05_snf\Data\SNFLibrary.gdb</onlink></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This data set is a complete digital hydrologic unit boundary layer to the Watershed (10-digit) 5th level for the entire United States. This data set consists of geo-referenced digital data and associated attributes created in accordance with the "Federal Guidelines, Requirements, and Procedures for the National Watershed Boundary Dataset; Chapter 3 of Section A, Federal Standards, Book 11, Collection and Delineation of Spatial Data; Techniques and Methods 11-A3" (04/01/2009). http://www.ncgc.nrcs.usda.gov/products/datasets/watershed/index.html . Polygons are attributed with hydrologic unit codes for 1st(Region), 2nd(Sub-Region), 3rd(Basin), and 4th(Sub-Basin) Hydrologic Unit Level codes, names, Sub-Basin acres and square miles.</abstract>
+			<purpose>The Watershed and Subwatershed hydrologic unit boundaries provide a uniquely identified and uniform method of subdividing large drainage areas. The smaller sized 6th level sub-watersheds (up to 40,000 acres) are useful for numerous application programs supported by a variety of local, State, and Federal Agencies. This data set is intended to be used as a tool for water-resource management and planning activities, particularly for site-specific and localized studies requiring a level of detail provided by large-scale map information. The dataset will be appended to a larger seamless nationally consistant geospatial database as other states complete their portion of the watershed boundary dataset.</purpose>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>1980</begdate>
+					<endtime>unknown</endtime>
+					<enddate>2009</enddate></rngdates>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-180.000000</westbc>
+				<eastbc Sync="TRUE">180.000000</eastbc>
+				<northbc Sync="TRUE">85.438779</northbc>
+				<southbc Sync="TRUE">5.613655</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">-6094249.350700</leftbc><rightbc Sync="TRUE">3310053.257300</rightbc><bottombc Sync="TRUE">-2072975.931100</bottombc><topbc Sync="TRUE">4412780.876300</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>None</themekt>
+				<themekey>HUC</themekey>
+				<themekey>Hydrologic Units</themekey>
+				<themekey>Hydrologic Unit Code</themekey>
+				<themekey>Region</themekey>
+				<themekey>Sub-region</themekey>
+				<themekey>Basin</themekey>
+				<themekey>Sub-basin</themekey>
+				<themekey>Watershed</themekey>
+				<themekey>Watershed Boundaries</themekey>
+				<themekey>boundaries</themekey>
+				<themekey>Subwatershed</themekey>
+				<themekey>WBD</themekey>
+				<themekey>Watershed Boundary Dataset</themekey>
+				<themekey>HUC10</themekey><themekey>Subbasin</themekey></theme>
+			<place>
+				<placekt>None</placekt>
+				<placekey>USA</placekey>
+				<placekey>United States of America</placekey>
+			</place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>The distributor shall not be held liable for improper or incorrect use of this data, based on the description of appropriate/inappropriate uses described in this metadata document. It is strongly recommended that this data is directly acquired from the distributor and not indirectly through other sources which may have changed the data in some way. These data should not be used at scales greater than 1:24,000 for the purpose of identifying hydrographic watershed boundary feature locations in the U.S.A. The NRCS should be acknowledged as the data source in products derived from these data. The Watershed Boundary Dataset is public information and may be interpreted by all organizations, agencies, units of government, or others based on needs; however, they are responsible for the appropriate application of the data. Federal, State, or local regulatory bodies are not to reassign to the Natural Resources Conservation Service any authority for the decisions they make.  The Natural Resources Conservation Service will not perform any evaluations of these maps or purposes related solely to State or local regulatory programs. Photographic or digital enlargement of these maps to scales greater than that at which they were originally delineated can result in misrepresentation of the data.  If enlarged, the maps will not include the fine detail that would be appropriate for mapping at the small scale.  Digital data files are periodically updated. Files are dated, and users are responsible for obtaining the latest version of the data from the source distributor.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>U.S. Department of Agriculture, Natural Resources Conservation Service, National Cartography and Geospatial Center</cntorg>
+					<cntper>Steve Nechero</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>501 W. Felix St., Bldg. 23</address>
+					<city>Fort Worth</city>
+					<state>Texas</state>
+					<postal>76115</postal>
+				</cntaddr>
+				<cntvoice>(817) 509-3366</cntvoice>
+				<cntemail>Steven.Nechero@ftw.usda.gov</cntemail>
+				<cntinst>Please email questions and requests.</cntinst>
+				<cntpos>Cartographer, Technology Applications Team Lead</cntpos></cntinfo>
+		</ptcontac>
+		<datacred>Funding and support for the Watershed Boundary Dataset (WBD) were provided by the Natural Resources Conservation Service, the Environmental Protection Agency, and the United States Geological Survey. Representatives from the U.S. Geological Survey and Environmental Protection Agency contributed a substantial amount of time and salary towards quality review and updating of the dataset in order to meet the Federal Standards for Delineation of Hydrologic Unit Boundaries.</datacred>
+		<native Sync="TRUE">Microsoft Windows 2000 Version 5.2 (Build 3790) Service Pack 2; ESRI ArcCatalog 9.3.1.4000</native>
+		<natvform Sync="TRUE">File Geodatabase Feature Class</natvform></idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>10% of the attributes were visually reviewed.  The accuracy of this data is dependent on the level of detail of the source material and the interpretation procedures for capturing that source.</attraccr>
+		</attracc>
+		<logic>There are no unclosed polygons, intersections without nodes, or polygons without labels or with more than one label.  The ArcGIS geodatabase topology tools were used to make corrections using two rules: no gaps and no overlaps.</logic>
+		<complete>All fields for all polygons are attributed.</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>The WBD was produced using Digital Raster Graphics (DRG's) as the source map. Data completeness for DRG files reflects content of the source graphic and may therefore be reflected in the completeness and accuracy of the WBD. The map was digitized from USGS 1:24,000-scale digital raster graphic base maps, with an inherited error of +/- 40 feet according to the USGS National Map Accuracy Standards.
+It is estimated that any errors detected were less than 10%. It should also be noted that while general rules of hydrology were used (i.e. natural water flow is downhill), the locations of boundaries is still somewhat subjective as the 1:24,000-scale DRG's do not always provide enough information for identifying the location of the boundaries.</horizpar>
+			</horizpa>
+			<vertacc>
+				<vertaccr>N/A</vertaccr>
+			</vertacc>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Geological Survey</origin>
+						<pubdate>Unknown</pubdate>
+						<title>USGS 7.5 Minute Topographic Quadrangle Sheets</title>
+						<geoform>map</geoform>
+					</citeinfo>
+				</srccite>
+				<srcscale>24000</srcscale>
+				<typesrc>paper</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>unknown</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>map delineation</srccurr>
+				</srctime>
+				<srccitea>USGS1</srccitea>
+				<srccontr>hydrologic unit map delineation and digitize map</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Geological Survey</origin>
+						<pubdate>Unknown</pubdate>
+						<title>Digital Raster Graphic</title>
+						<onlink>http://datagateway.nrcs.usda.gov</onlink>
+					</citeinfo>
+				</srccite>
+				<srcscale>24000</srcscale>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>1999</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>map delineation</srccurr>
+				</srctime>
+				<srccitea>USGSDRG</srccitea>
+				<srccontr>hydrologic unit map delineation and digitize map</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Geological Survey</origin>
+						<pubdate>Unknown</pubdate>
+						<title>Digital Orthophoto Quads</title>
+						<geoform>raster digital data</geoform>
+						<onlink>http://datagateway.nrcs.usda.gov</onlink>
+					</citeinfo>
+				</srccite>
+				<srcscale>24000</srcscale>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>unknown</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>publication date</srccurr>
+				</srctime>
+				<srccitea>USGSDOQ</srccitea>
+				<srccontr>GIS raster coverage used for reference in watershed boundary delineation</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Geological Survey</origin>
+						<pubdate>Unknown</pubdate>
+						<title>250K Hydrologic Unit Boundaries</title>
+					</citeinfo>
+				</srccite>
+				<srcscale>250000</srcscale>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>unknown</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>ground condition</srccurr>
+				</srctime>
+				<srccitea>USGS2</srccitea>
+				<srccontr>Reference for 8-digit watershed delineation</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Geological Survey</origin>
+						<pubdate>Unknown</pubdate>
+						<title>National Hydrography Dataset</title>
+						<onlink>http://nhd.usgs.gov/data.html</onlink>
+					</citeinfo>
+				</srccite>
+				<srcscale>24000</srcscale>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>unknown</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>map delineation</srccurr>
+				</srctime>
+				<srccitea>NHD</srccitea>
+				<srccontr>GIS coverage used for reference in watershed boundary delineation</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>The original hydrologic unit boundaries were hand-digitized on a tablet from the USGS 7.5 minute quadrangles. This process occurred over a span of approximately 20 years.</procdesc>
+				<srcused>USGS1</srcused>
+				<procdate>20090320</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>The original dataset was reviewed by USGS personnel using on-screen techniques with DRG's as the base map. All hydrologic units within the dataset that were under 3,000 acres were dissolved out.</procdesc>
+				<srcused>USGSDRG</srcused>
+				<procdate>2003</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>The new WBD dataset was reviewed on-screen by USGS, EPA, or NRCS personnel using DRG's and DOQ?s as base maps. Source_Used_Citation_Abbreviation: USGSDRG</procdesc>
+				<srcused>USGSDOQ</srcused>
+				<procdate>2009</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Hydrologic units from surrounding states were used to edgematch watershed boundaries.</procdesc>
+				<srcused>NA</srcused>
+				<procdate>2009</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Original dataset attribution was reviewed and revised to reflect the updates and changes made to the dataset. These revisions to the attribution were also made to ensure that the dataset met the Federal Standards for Delineation of Hydrologic Unit Boundaries. The NHD was used during this process to help with the naming and downstream coding of each unit. In some instances there were name hydrologic unit name discrepancies between the NHD and what was printed on the DRG's. In these instances the DRG's were used instead of the NHD.</procdesc>
+				<srcused>NHD</srcused>
+				<srcused>USGSDRG</srcused>
+				<procdate>2009</procdate>
+				<srcprod>WBD12</srcprod></procstep>
+			<procstep><srcused>WBD12</srcused><srcprod>WBD8</srcprod><procdesc>The original, completed WBDHU12 layer was dissolved by HUC8 code (summed the Acreage attribute) to derive the new HUC8 boundaries at the 1:24,000 scale.  Attributes were updated from the HUC250K layer except where there have been recent name changes.  Square Miles were calculated; FIPS and state boundaries crossed were updated.</procdesc><procdate>200904</procdate></procstep><procstep><procdesc>First draft of metadata created by Laura Davenport using
+METADATA Editor in ArcCatalog ver. 9.2 sp.5.</procdesc><procdate>200904</procdate></procstep><procstep><procdesc>Second draft of metadata created by Laura Davenport using
+METADATA Editor in ArcCatalog ver. 9.2 sp.6.</procdesc><procdate>20090820</procdate></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">Server=soilmart1; Service=5153; Database=base; User=base; Version=sde.DEFAULT</srcused><date Sync="TRUE">20101201</date><time Sync="TRUE">15483400</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">T:\FS\NFS\WOEcosystemMgmtCoord\NRIS\Project\FME\NRM_Publishing\WBD_HUC8_metadata.xml</srcused><procdate Sync="TRUE">20101207</procdate><proctime Sync="TRUE">16481800</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">\\ds.fs.fed.us\EFS\FS\NFS\Sierra\Project\Premigration\htaylor\WBD.gdb</srcused><procdate Sync="TRUE">20110208</procdate><proctime Sync="TRUE">15444100</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="S_USA_WBD_HU10">
+				<sdtstype Sync="TRUE">G-polygon</sdtstype>
+				<ptvctcnt Sync="TRUE">0</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="S_USA_WBD_HU10"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">0</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer><XYRank Sync="TRUE">1</XYRank><ZRank Sync="TRUE">1</ZRank><topoWeight Sync="TRUE">5.000000</topoWeight><validateEvents Sync="TRUE">FALSE</validateEvents><partTopoRules><topoRuleID Sync="TRUE">1</topoRuleID></partTopoRules><partTopoRules><topoRuleID Sync="TRUE">2</topoRuleID></partTopoRules></esriterm></ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<geodetic>
+				<horizdn Sync="TRUE">North American Datum of 1983</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><projcsn Sync="TRUE">NAD_1983_UTM_Zone_11N</projcsn></cordsysn><planar><planci><plance Sync="TRUE">coordinate pair</plance><plandu Sync="TRUE">meters</plandu><coordrep><absres Sync="TRUE">0.000100</absres><ordres Sync="TRUE">0.000100</ordres></coordrep></planci><gridsys><gridsysn Sync="TRUE">Universal Transverse Mercator</gridsysn><utm><utmzone Sync="TRUE">11</utmzone><transmer><sfctrmer Sync="TRUE">0.999600</sfctrmer><longcm Sync="TRUE">-117.000000</longcm><latprjo Sync="TRUE">0.000000</latprjo><feast Sync="TRUE">500000.000000</feast><fnorth Sync="TRUE">0.000000</fnorth></transmer></utm></gridsys></planar></horizsys>
+		<vertdef>
+			<altsys>
+				<altres Sync="TRUE">0.000100</altres>
+				<altenc Sync="TRUE">Explicit elevation coordinate included with horizontal coordinates</altenc>
+				<altdatum>not applicable</altdatum><altunits>not applicable</altunits></altsys>
+			<depthsys><depthdn>not applicable</depthdn><depthres>1.000000</depthres><depthdu>not applicable</depthdu><depthem>Implicit coordinate</depthem></depthsys></vertdef>
+	</spref>
+	<eainfo>
+		<detailed Name="S_USA_WBD_HU10">
+			<enttyp>
+				<enttypl Sync="TRUE">S_USA_WBD_HU10</enttypl>
+				<enttypd>identifies watershed boundaries</enttypd>
+				<enttypds>n/a</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">0</enttypc></enttyp>
+			<attr><attrlabl Sync="TRUE">OBJECTID</attrlabl><attalias Sync="TRUE">OBJECTID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">GAZ_ID</attrlabl><attalias Sync="TRUE">GAZ_ID</attalias><attrtype Sync="TRUE">Integer</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">AREA_ACRES</attrlabl><attalias Sync="TRUE">AREA_ACRES</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Area in acres</attrdef></attr><attr><attrlabl Sync="TRUE">AREA_SQKM</attrlabl><attalias Sync="TRUE">AREA_SQKM</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Area in square kilometers</attrdef></attr><attr><attrlabl Sync="TRUE">STATES</attrlabl><attalias Sync="TRUE">STATES</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>States</attrdef></attr><attr><attrlabl Sync="TRUE">LOADDATE</attrlabl><attalias Sync="TRUE">LOADDATE</attalias><attrtype Sync="TRUE">Date</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Date of Load</attrdef></attr><attr><attrlabl Sync="TRUE">HUC_10</attrlabl><attalias Sync="TRUE">HUC_10</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">10</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>8-digit (5th level) code used for watersheds</attrdef></attr><attr><attrlabl Sync="TRUE">HU_10_NAME</attrlabl><attalias Sync="TRUE">HU_10_NAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">120</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef>Name of the watershed</attrdef></attr><attr><attrlabl Sync="TRUE">HU_10_TYPE</attrlabl><attalias Sync="TRUE">HU_10_Type</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">255</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">HU_10_MOD</attrlabl><attalias Sync="TRUE">HU_10_MOD</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">SHAPE</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">SE_ANNO_CAD_DATA</attrlabl><attalias Sync="TRUE">SE_ANNO_CAD_DATA</attalias><attrtype Sync="TRUE">Blob</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">SHAPE_Length</attrlabl><attalias Sync="TRUE">SHAPE_Length</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Length of feature in internal units.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">SHAPE_Area</attrlabl><attalias Sync="TRUE">SHAPE_Area</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr></detailed>
+		<overview>
+			<eaover>Each hydrologic unit polygon has associated attributes stored in 
+tabular format. An attribute, also called a field or column, is defined by 
+name, type, size, and valid values. For this layer, these attributes are
+the Hydrologic Unit Codes, Names, Acreage, Square Miles, States, and 
+FIPS code for each county boundary crossed.                                        
+ftp://ftp-fc.sc.egov.usda.gov/NCGC/products/watershed/hu-standards.pdf</eaover>
+			<eadetcit>Federal Guidelines, Requirements, and Procedures for the National Watershed Boundary Dataset; Chapter 3 of Section A, Federal Standards, Book 11, Collection and Delineation of Spatial Data; Techniques and Methods 11-A3.</eadetcit>
+		</overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntperp>
+					<cntper>Steve Nechero</cntper>
+					<cntorg>U.S. Department of Agriculture, Natural Resources Conservation Service, National Cartography and Geospatial Center</cntorg>
+				</cntperp>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>501 W. Felix St., Bldg. 23</address>
+					<city>Fort Worth</city>
+					<state>Texas</state>
+					<postal>76115</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(817) 509-3366</cntvoice>
+				<cntemail>Steven.Nechero@ftw.usda.gov</cntemail>
+				<cntinst>Please e-mail with data requests.</cntinst>
+				<cntpos>Cartographer, Technology Applications Team Lead</cntpos></cntinfo>
+		</distrib>
+		<resdesc>Downloadable Data</resdesc>
+		<distliab>The distributor shall not be held liable for improper or incorrect use of this data, based on the description of appropriate/inappropriate uses described in this metadata document. It is strongly recommended that this data is directly acquired from the distributor and not indirectly through other sources which may have changed the data in some way. These data should not be used at scales greater than 1:24,000 for the purpose of identifying hydrographic watershed boundary feature locations in the U.S.A.  The U.S. Department of Agriculture makes no claims for the data's suitability for other purposes. U.S. Department of Agriculture should be acknowledged as the data source in products derived from these data. The Watershed Boundary Dataset is public information and may be interpreted by all organizations, agencies, units of government, or others based on needs; however, they are responsible for the appropriate application of the data. Federal, State, or local regulatory bodies are not to reassign to the U.S. Department of Agriculture or the Natural Resources Conservation Service any authority for the decisions they make.  The Natural Resources Conservation Service will not perform any evaluations of these maps or purposes related solely to State or local regulatory programs. Photographic or digital enlargement of these maps to scales greater than that at which they were originally delineated can result in misrepresentation of the data.  If enlarged, the maps will not include the fine detail that would be appropriate for mapping at the small scale.  Digital data files are periodically updated. Files are dated, and users are responsible for obtaining the latest version of the data from the source distributor.</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ARC Export</formname>
+					<formverd>20050801</formverd>
+					<filedec>no compression applies</filedec>
+					<transize>19.156</transize>
+				</digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://datagateway.nrcs.usda.gov</networkr>
+							</networka>
+						</computer>
+					</onlinopt>
+				</digtopt>
+			</digform>
+			<fees>none</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20110207</metd>
+		<metc>
+			<cntinfo>
+				<cntperp>
+					<cntper>Steve Nechero</cntper>
+					<cntorg>U.S. Department of Agriculture, Natural Resources Conservation Service, National Cartography and Geospatial Center</cntorg>
+				</cntperp>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>501 W. Felix St., Bldg. 23</address>
+					<city>Fort Worth</city>
+					<state>TX</state>
+					<postal>76115</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>817-509-3366</cntvoice>
+				<cntfax>817-509-3469</cntfax>
+				<cntemail>Steve.Nechero@ftw.usda.gov</cntemail>
+				<cntpos>Cartographer, Technology Applications Team Lead</cntpos></cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><ModDate>20110207</ModDate><ModTime>11464800</ModTime><CreaDate>20191226</CreaDate><CreaTime>14105500</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20110207</SyncDate><SyncTime>11464800</SyncTime><DataProperties><lineage><Process ToolSource="C:\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\CopyFeatures" Date="20110207" Time="115351">CopyFeatures "T:\FS\Reference\GeoTool\agency\DatabaseConnection\edwdb - sde.default as myself.sde\S_USA.WBD\S_USA.WBD_HU10" T:\FS\NFS\Sierra\Project\Premigration\htaylor\WBD.gdb\WBD\S_USA_WBD_HU10 # 0 0 0</Process></lineage></DataProperties><ArcGISFormat>1.0</ArcGISFormat></Esri><mdDateSt Sync="TRUE">20110207</mdDateSt><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows 2000 Version 5.2 (Build 3790) Service Pack 2; ESRI ArcCatalog 9.3.1.4000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">S_USA_WBD_HU10</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">-6094249.3507</westBL><eastBL Sync="TRUE">3310053.2573</eastBL><northBL Sync="TRUE">4412780.8763</northBL><southBL Sync="TRUE">-2072975.9311</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-180</westBL><eastBL Sync="TRUE">180</eastBL><northBL Sync="TRUE">85.438779</northBL><southBL Sync="TRUE">5.613655</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\ds.fs.fed.us\EFS\FS\Reference\GIS\r05_snf\Data\SNFLibrary.gdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc></distorTran><distorFormat><formatName Sync="TRUE">File Geodatabase Feature Class</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">NAD_1983_UTM_Zone_11N</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="S_USA_WBD_HU10"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">0</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo></metadata>
