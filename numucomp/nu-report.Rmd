@@ -1,0 +1,170 @@
+---
+title: "New MU Comparison Report"
+author: "Andrew Gene Brown"
+date: "3/10/2020"
+output: html_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE)
+
+library(plyr)
+library(rgdal)
+library(sharpshootR)
+
+source('nu-config.R')
+source('sampleRasterStackByMUNew.R')
+
+mu <- try(readOGR(dsn=mu.dsn, layer=mu.layer, stringsAsFactors = FALSE))
+if(class(mu) == 'try-error')
+  stop(paste0('Cannot read map unit polygon/feature file: "', mu.dsn, ' / ', mu.layer, '"'), call. = FALSE)
+if(!(mu.col %in% names(mu)))
+  stop(paste0('Cannot find map unit column (',mu.col,') in attribute table of: "', mu.dsn, ' / ', mu.layer,'"'), call. = FALSE)
+
+accessible.inputs <- file.access(as.character(unlist(raster.files)), mode = 4) + 1 
+if(any( accessible.inputs == 0 )) {
+  unreadable.files <- names(which(accessible.inputs == 0))
+  stop(paste0("The following input files either do not exist or are unreadable: \n", paste0(unreadable.files, collapse=", ")))
+}
+
+if(exists('mu.set')) { 
+  mu.set <- as.character(mu.set)
+  mu.set.bak <- mu.set
+  mu_nosp <- !(mu.set %in% mu[[mu.col]])
+  
+  # check if any of the predefined musyms are absent from the spatial
+  if(any(mu_nosp))
+    mu.set <- mu.set[-which(mu_nosp)] #if so, remove them
+  
+  # if we removed everything (e.g. no musyms match due to wrong config file?), fail gracefully
+  if(length(mu.set) == 0) 
+    stop(paste0("Cannot find map unit polygons with symbol: ",paste0(mu.set.bak,collapse=", ")))
+  
+  # if mu.set defined in config.R, only keep the features with musym matching set
+  mu <- mu[which(mu[[mu.col]] %in% mu.set), ] 
+} else {
+  # if mu.set is not predefined, ordering is determined by the order of musyms in the source file
+  mu.set <- sort(unique(mu[[mu.col]]))
+}
+
+if(!dir.exists('output')) 
+  dir.create('./output')
+
+if(!exists('shp.unsampled.fname')) shp.unsampled.fname <- paste0('un-sampled-', paste(mu.set, collapse='_'))
+if(!exists('shp.stats.fname')) shp.stats.fname <- paste0('polygons-with-stats-', paste(mu.set, collapse='_'))
+if(!exists('shp.qc.fname')) shp.qc.fname <- paste0('poly-qc-', paste(mu.set, collapse='_'))
+
+if(!exists('csv.qc.fname')) csv.qc.fname <- paste0('poly-qc-', paste(mu.set, collapse='_'),'.csv')
+if(!exists('csv.stats.fname')) csv.stats.fname <- paste0('poly-stats-', paste(mu.set, collapse='_'), '.csv')
+
+outputfiles <- c(paste0(c(shp.unsampled.fname,shp.stats.fname,shp.qc.fname),".shp"), csv.qc.fname, csv.stats.fname)
+if(any(grepl(basename(outputfiles), pattern='([/\\|<>:\\*?\"])'))) {
+  stop("Map unit set or output file name contains invalid characters for filename. Either override default output filenames in config.R or remove [/\\|<>:\\*?\"] characters from your map unit symbols.", call. = FALSE)
+}
+
+# in order to avoid column name collisions due to DBF limitations, keep only the mu.col column
+mu <- mu[, mu.col, drop=FALSE]
+
+# add a unique polygon ID
+mu$pID <- seq(from=1, to=length(mu))
+
+if(cache.samples & file.exists('cached-samples.Rda')) {
+  message('Using cached raster samples...')
+  .sampling.time <- 'using cached samples'
+  load('cached-samples.Rda')
+} else {
+  .timer.start <- Sys.time()
+    sampling.res <- suppressWarnings(sampleRasterStackByMUNew(mu, 
+                                                         mu.set, 
+                                                         mu.col, 
+                                                         raster.list, 
+                                                         pts.per.acre, 
+                                                         estimateEffectiveSampleSize = correct.sample.size))
+  .timer.stop <- Sys.time()
+  
+  .sampling.time <- format(difftime(.timer.stop, .timer.start, units='mins'), digits=2)
+  
+  print(paste0("Completed sampling of raster stack for poly symbols (",
+               paste(mu.set,collapse=","),") in ",.sampling.time,"."))
+  
+  sampling.res$raster.samples$.id <- factor(sampling.res$raster.samples$.id, levels=mu.set)
+  
+  print("DONE!")
+  
+  if(cache.samples)
+    save(mu, sampling.res,file = 'cached-samples.Rda')
+}
+```
+
+```{r echo=FALSE}
+list.to.df <- function(l, idcol) {
+  res <- do.call('rbind', l)
+  if(nrow(res)) {
+    id.df <- data.frame(names(l))
+    colnames(id.df) <- idcol
+    res <- cbind(id.df, as.data.frame(res))
+    rownames(res) <- NULL
+    return(res)
+  } else return(NULL)
+}
+
+summarizeSamples <- function(samples, probs=c(0,0.05,0.5,0.95,1))  {
+  res <- lapply(raster.pnames, function(n) {
+    n.obs <- c(sum(!is.na(samples[, n])), length(samples[,n]))
+    names(n.obs) <- c("non.na", "n.obs")
+    return(c(quantile(samples[, n], probs=probs, na.rm=TRUE), n.obs))
+  })
+  names(res) <- raster.pnames
+  res <- list.to.df(res, idcol='variable')
+  return(res)
+}
+
+getThresholds <- function(mu, varname) {
+  df <- data.frame(mu, varname)
+  res.max <- rep(Inf, nrow(df))
+  res.min <- rep(-Inf, nrow(df))
+  for(m in mu) {
+    for(v in varname) {
+      for(t in threshold.list) {
+        idx <- which(grepl(m, pattern = t$musym) & df[,2] == v)
+        if(length(idx)) {
+          res.max[idx] <- t$vmax
+          res.min[idx] <- t$vmin
+        }
+      }      
+    }
+  }
+  return(data.frame(vmin=res.min,vmax=res.max))
+}
+
+thresholdSamples <- function(samples, threshold.list)  {
+  res <- lapply(raster.pnames, function(n) {
+    foo <- factor(rep(NA, nrow(samples)), levels=c(NA,"LT","IN","GT"))
+    if(n %in% names(samples)) {
+      foo <- factor(rep("IN", nrow(samples)), levels=c(NA,"LT","IN","GT"))
+      tthresh <- quantile(samples[,n], probs=c(0.01,0.99), na.rm=T)
+      #thresh <- list()
+      #thresh$vmin <- tthresh[1]
+      #thresh$vmax <- tthresh[2]
+      thresh <- getThresholds(samples[,1], varname = n)
+      foo[samples[, n] > thresh$vmax] <- "GT"
+      foo[samples[, n] < thresh$vmin] <- "LT"
+    }
+    return(t(table(foo)))
+  })
+  names(res) <- raster.pnames
+  res <- list.to.df(res, idcol='variable')
+  return(res)
+}
+
+all.samples <- sampling.res$raster.samples
+foo <- split(all.samples, f=all.samples[,c("pID")])
+foo2 <- split(all.samples, f=all.samples[,c(mu.col)])
+
+res <- list.to.df(lapply(foo, summarizeSamples), "pID")
+res <- res[order(as.numeric(res$pID)),]
+
+res2 <- list.to.df(lapply(foo2, thresholdSamples), mu.col)
+res2 <- res2[order(res2$musym, res2$variable),]
+res2
+```

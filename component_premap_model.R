@@ -198,8 +198,11 @@ names(predictors) <- c("moistdef","abr","elev","gdd","ndvi_july","nlcd","gradien
 predictors <- crop(predictors, extent(project.extent))
 predictors <- mask(predictors, mask = fasterize::fasterize(sf::st_as_sf(project.extent), raster = predictors[[1]]))
 plot(is.na(predictors))
-writeRaster(predictors, filename = "WillowCreek_MUCOMP_predictors.tif", overwrite=T)
-
+p.names <- names(predictors)
+for(n in 1:length(p.names)) {
+  writeRaster(predictors[[n]], 
+              filename = paste0("WillowCreek_",p.names[n],".tif"), overwrite=T)
+}
 the.map <- raster::predict(object=predictors, model=rf, filename="prediction6.tif", overwrite=T)
 rasterVis::levelplot(the.map, margin = FALSE)
 
