@@ -18,16 +18,16 @@ raster.list <- list(
 )
 
 threshold.list <- list(
-    list(musym='13[67]', name="elevation", vmin=1095, vmax=1770),
-    list(musym='13[8]', name="elevation", vmin=820, vmax=1675),
-    list(musym='13[68]', name="slope", vmin=5, vmax=35),
-    list(musym='137', name="slope", vmin=65, vmax=100)
+    list(pattern='^13[67]$', name="elevation", vmin=1095, vmax=1770),
+    list(pattern='^13[8]$', name="elevation", vmin=820, vmax=1675),
+    list(pattern='^13[68]$', name="slope", vmin=5, vmax=35),
+    list(pattern='^137$', name="slope", vmin=65, vmax=100)
 )
 
 # path to parent folder of SHP, no trailing forward slash (/)
 mu.dsn <- '../geodata'
 # SHP name, without file extension
-mu.layer <- 'WillowCreek_SSURGO'
+mu.layer <- 'SSURGO'
 
 ############################################
 ### column with map unit ID / key / symbol #

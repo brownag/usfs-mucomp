@@ -15,6 +15,12 @@ library(sharpshootR)
 source('nu-config.R')
 source('sampleRasterStackByMUNew.R')
 
+# convenience variables from raster.list
+raster.type <- lapply(raster.list, function(l) return(l$type))
+raster.files <- lapply(raster.list, function(l) return(l$file))
+raster.pnames <- lapply(raster.list, function(l) return(l$name))
+raster.labels <- lapply(raster.list, function(l) return(l$label))
+
 mu <- try(readOGR(dsn=mu.dsn, layer=mu.layer, stringsAsFactors = FALSE))
 if(class(mu) == 'try-error')
   stop(paste0('Cannot read map unit polygon/feature file: "', mu.dsn, ' / ', mu.layer, '"'), call. = FALSE)
@@ -87,7 +93,7 @@ if(cache.samples & file.exists('cached-samples.Rda')) {
   print(paste0("Completed sampling of raster stack for poly symbols (",
                paste(mu.set,collapse=","),") in ",.sampling.time,"."))
   
-  sampling.res$raster.samples$.id <- factor(sampling.res$raster.samples$.id, levels=mu.set)
+  #sampling.res$raster.samples$.id <- factor(sampling.res$raster.samples$.id, levels=mu.set)
   
   print("DONE!")
   
@@ -97,15 +103,20 @@ if(cache.samples & file.exists('cached-samples.Rda')) {
 ```
 
 ```{r echo=FALSE}
+# handy function to replace plyr 
 list.to.df <- function(l, idcol) {
-  res <- do.call('rbind', l)
-  if(nrow(res)) {
-    id.df <- data.frame(names(l))
-    colnames(id.df) <- idcol
-    res <- cbind(id.df, as.data.frame(res))
-    rownames(res) <- NULL
-    return(res)
-  } else return(NULL)
+  l.names <- names(l)
+  n.l <- unlist(lapply(l, nrow))
+  res <- as.data.frame(do.call('rbind', l))
+  buf <- list()
+  for(i in 1:length(l.names)) {
+    if(length(n.l[i]))
+      if(n.l[i] > 0)
+        buf <- c(buf, rep(l.names[i], n.l[i]))
+  }
+  res[[idcol]] <- unlist(buf)
+  rownames(res) <- NULL
+  return(res)
 }
 
 summarizeSamples <- function(samples, probs=c(0,0.05,0.5,0.95,1))  {
@@ -120,20 +131,19 @@ summarizeSamples <- function(samples, probs=c(0,0.05,0.5,0.95,1))  {
 }
 
 getThresholds <- function(mus, varname) {
-  df <- data.frame(mus=as.character(mus), 
-                   varname=as.character(varname))
   if(length(varname) > 1) {
     varname <- varname[1]
     message("Multiple variable names supplied to getThresholds(), returning values for first name.")
   }
   
-  res.max <- rep(Inf, nrow(df))
-  res.min <- rep(-Inf, nrow(df))
+  res.max <- rep(Inf, length(mus))
+  res.min <- rep(-Inf, length(mus))
   
   for(tl in threshold.list) {
-    if(tl$name == varname & all(grepl(mus, pattern=tl$musym))) {
-      res.max <- rep(tl$vmax, nrow(df))
-      res.min <- rep(tl$vmin, nrow(df))
+    if(tl$name == varname & all(grepl(tl$pattern, mus))) {
+      print(paste(unique(mus), varname, tl$name, tl$pattern))
+      res.max <- rep(tl$vmax, length(mus))
+      res.min <- rep(tl$vmin, length(mus))
     }
   }      
   
@@ -141,7 +151,7 @@ getThresholds <- function(mus, varname) {
                     vmax=res.max))
 }
 
-thresholdSamples <- function(samples, threshold.list)  {
+thresholdSamples <- function(samples)  {
   res <- lapply(raster.pnames, function(n) {
     foo <- factor(rep("IN", nrow(samples)), levels=c("LT","IN","GT"))
     tthresh <- quantile(samples[,n], probs=c(0.01,0.99), na.rm=T)
@@ -152,17 +162,20 @@ thresholdSamples <- function(samples, threshold.list)  {
     foo[samples[, n] > thresh$vmax] <- "GT"
     foo[samples[, n] < thresh$vmin] <- "LT"
     tab <- t(table(foo))
-    tab <- round(tab/sum(tab),2)
     names(tab) <- c("LT","IN","GT")
-    return(c(tab, unique(thresh)))
+    return(as.data.frame(t(c(tab, unique(thresh)))))
   })
   names(res) <- raster.pnames
   res <- list.to.df(res, idcol='variable')
   return(res)
 }
+```
 
+```{r}
 # example thresholding
-res2 <- list.to.df(lapply(foo2, thresholdSamples), mu.col)
+samples.by.mu <- split(sampling.res$raster.samples,
+                      sampling.res$raster.samples[[mu.col]])
+res2 <- list.to.df(lapply(samples.by.mu, thresholdSamples), mu.col)
 res2 <- res2[order(res2$musym, res2$variable),]
-res2
+knitr::kable(res2)
 ```
