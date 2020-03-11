@@ -172,10 +172,17 @@ thresholdSamples <- function(samples)  {
 ```
 
 ```{r}
-# example thresholding
+# example thresholding BY MU
 samples.by.mu <- split(sampling.res$raster.samples,
                       sampling.res$raster.samples[[mu.col]])
 res2 <- list.to.df(lapply(samples.by.mu, thresholdSamples), mu.col)
 res2 <- res2[order(res2$musym, res2$variable),]
-knitr::kable(res2)
+knitr::kable(res2, row.names = FALSE)
+
+# example thresholding BY POLYGON
+samples.by.poly <- split(sampling.res$raster.samples,
+                      sampling.res$raster.samples[["pID"]])
+res3 <- list.to.df(lapply(samples.by.poly, thresholdSamples), "pID")
+res3 <- res3[order(res3$pID, res3$variable),]
+knitr::kable(res3, row.names = FALSE)
 ```
